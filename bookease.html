@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEase — Premium Salon & Spa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bookease.css">
+    </head>
+<body>
+ 
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-logo" onclick="goTo('home')">Book<span>Ease</span></div>
+  <div class="nav-links">
+    <a onclick="goTo('home')">Home</a>
+    <a onclick="scrollToServices()">Services</a>
+    <a href="#how">How it works</a>
+    <button class="nav-cta" onclick="goTo('booking')">Book now</button>
+    <div class="nav-user-wrap">
+      <button class="nav-user-btn" id="nav-user-btn" onclick="toggleUserMenu()" aria-label="Account">&#9786;</button>
+      <div class="nav-dropdown" id="nav-dropdown">
+        <div class="nav-dropdown-user" id="nav-dropdown-user"></div>
+        <a onclick="goTo('profile'); closeUserMenu()"><span class="nav-dropdown-icon">👤</span> My profile</a>
+        <a onclick="goTo('dashboard'); closeUserMenu()"><span class="nav-dropdown-icon">📅</span> My appointments</a>
+        <a class="danger" onclick="logout()"><span class="nav-dropdown-icon">🚪</span> Log out</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+ 
+<!-- ══════════════════════ HOME PAGE ══════════════════════ -->
+<div id="page-home" class="page active">
+ 
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Premium salon &amp; spa · Bucharest</div>
+      <h1>Your next <em>beautiful</em><br>moment starts here</h1>
+      <p class="hero-sub">Expert stylists, curated treatments, and effortless online booking — all in one place.</p>
+      <div class="hero-actions">
+        <button class="btn-hero" onclick="goTo('booking')">Book an appointment</button>
+        <button class="btn-hero-ghost" onclick="scrollToServices()">Explore services</button>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">2,400+</div>
+          <div class="hero-stat-label">Happy clients</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">12</div>
+          <div class="hero-stat-label">Expert stylists</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4.9★</div>
+          <div class="hero-stat-label">Average rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <p class="section-tag">What we offer</p>
+      <h2 class="section-title">Treatments crafted<br>for <em>you</em></h2>
+      <div class="services-grid" id="services-grid">
+        <div class="service-card" onclick="goTo('booking')">
+          <div class="service-icon">✂️</div>
+          <div class="service-name">Haircut &amp; styling</div>
+          <div class="service-desc">Precision cuts and blowouts tailored to your face shape and lifestyle.</div>
+          <div class="service-meta">
+            <span class="service-price">From €30</span>
+            <span class="service-duration">45 min</span>
+          </div>
+        </div>
+        <div class="service-card" onclick="goTo('booking')">
+          <div class="service-icon">✨</div>
+          <div class="service-name">Facial treatment</div>
+          <div class="service-desc">Deep cleansing and hydrating facials using premium organic products.</div>
+          <div class="service-meta">
+            <span class="service-price">From €55</span>
+            <span class="service-duration">60 min</span>
+          </div>
+        </div>
+        <div class="service-card" onclick="goTo('booking')">
+          <div class="service-icon">🤲</div>
+          <div class="service-name">Relaxation massage</div>
+          <div class="service-desc">Full-body Swedish or deep tissue massage to melt away tension.</div>
+          <div class="service-meta">
+            <span class="service-price">From €70</span>
+            <span class="service-duration">90 min</span>
+          </div>
+        </div>
+        <div class="service-card" onclick="goTo('booking')">
+          <div class="service-icon">💅</div>
+          <div class="service-name">Manicure &amp; nails</div>
+          <div class="service-desc">Classic, gel, or nail art — hands that tell your story.</div>
+          <div class="service-meta">
+            <span class="service-price">From €25</span>
+            <span class="service-duration">30 min</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- How it works -->
+  <section class="how" id="how">
+    <div class="section-inner">
+      <p class="section-tag">Simple process</p>
+      <h2 class="section-title" style="color:var(--white);">Three steps to<br><em style="color:var(--green-pale)">your appointment</em></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Choose a service</div>
+          <div class="step-desc">Browse our treatments and pick what suits your mood and needs.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Pick a date &amp; time</div>
+          <div class="step-desc">See real-time availability and choose a slot that fits your schedule.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">Show up &amp; unwind</div>
+          <div class="step-desc">Get a confirmation email and just arrive — we handle the rest.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- Testimonials -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-tag">Client love</p>
+      <h2 class="section-title">What our clients <em>say</em></h2>
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Booking took less than two minutes and the team was absolutely wonderful. I've been coming back every month."</div>
+          <div class="testi-author">— Andreea M., Bucharest</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"The facial left my skin glowing for weeks. The online system makes it so easy to manage my appointments."</div>
+          <div class="testi-author">— Raluca D., Cluj-Napoca</div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Finally a salon that has their booking sorted. Fast, clean, and the massage was absolutely incredible."</div>
+          <div class="testi-author">— Mihai T., Bucharest</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <footer>
+    <p style="margin-bottom:8px;">© 2026 BookEase · All rights reserved</p>
+    <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a>
+  </footer>
+</div>
+ 
+<!-- ══════════════════════ BOOKING PAGE ══════════════════════ -->
+<div id="page-booking" class="page">
+  <div class="booking-page">
+    <div class="booking-page-inner">
+      <h1>Book your appointment</h1>
+      <p class="booking-page-sub">Choose a service, pick a time, and we'll see you soon.</p>
+ 
+      <!-- Steps bar -->
+      <div class="booking-steps-bar">
+        <div class="bs">
+          <div class="bs-num active" id="bsn1">1</div>
+          <div class="bs-label active" id="bsl1">Service</div>
+        </div>
+        <div class="bs-line"></div>
+        <div class="bs">
+          <div class="bs-num" id="bsn2">2</div>
+          <div class="bs-label" id="bsl2">Date &amp; time</div>
+        </div>
+        <div class="bs-line"></div>
+        <div class="bs">
+          <div class="bs-num" id="bsn3">3</div>
+          <div class="bs-label" id="bsl3">Confirm</div>
+        </div>
+      </div>
+ 
+      <!-- Booking form -->
+      <div id="booking-form">
+        <div class="booking-grid">
+          <!-- Left panel -->
+          <div>
+            <!-- Step 1: Services -->
+            <div id="step-services" class="booking-main">
+              <h2>Select a service</h2>
+              <div id="svc-list">
+                <div class="svc-opt" onclick="pickService(this,'Haircut & styling','€40','45 min')">
+                  <div class="svc-radio"></div>
+                  <div class="svc-info"><div class="svc-info-name">Haircut &amp; styling</div><div class="svc-info-sub">45 min · with any stylist</div></div>
+                  <div class="svc-price-tag">€40</div>
+                </div>
+                <div class="svc-opt" onclick="pickService(this,'Facial treatment','€55','60 min')">
+                  <div class="svc-radio"></div>
+                  <div class="svc-info"><div class="svc-info-name">Facial treatment</div><div class="svc-info-sub">60 min · premium organic</div></div>
+                  <div class="svc-price-tag">€55</div>
+                </div>
+                <div class="svc-opt" onclick="pickService(this,'Relaxation massage','€70','90 min')">
+                  <div class="svc-radio"></div>
+                  <div class="svc-info"><div class="svc-info-name">Relaxation massage</div><div class="svc-info-sub">90 min · Swedish or deep tissue</div></div>
+                  <div class="svc-price-tag">€70</div>
+                </div>
+                <div class="svc-opt" onclick="pickService(this,'Manicure & nails','€25','30 min')">
+                  <div class="svc-radio"></div>
+                  <div class="svc-info"><div class="svc-info-name">Manicure &amp; nails</div><div class="svc-info-sub">30 min · classic or gel</div></div>
+                  <div class="svc-price-tag">€25</div>
+                </div>
+              </div>
+            </div>
+ 
+            <!-- Step 2: Calendar -->
+            <div id="step-cal" class="booking-main" style="margin-top:16px;">
+              <h2>Pick a date</h2>
+              <div class="cal-wrap">
+                <div class="cal-nav">
+                  <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
+                  <span class="cal-month-label" id="cal-label">June 2026</span>
+                  <button class="cal-nav-btn" onclick="changeMonth(1)">&#8250;</button>
+                </div>
+                <div class="cal-days-header">
+                  <span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+                </div>
+                <div class="cal-days" id="cal-days"></div>
+              </div>
+              <div class="time-section" id="time-section" style="display:none;">
+                <h3>Available times</h3>
+                <div class="time-grid" id="time-grid"></div>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- Right: summary -->
+          <div class="booking-sidebar">
+            <div class="summary-card">
+              <h3>Booking summary</h3>
+              <div id="summary-content">
+                <p class="summary-empty">No service selected yet</p>
+              </div>
+              <button class="btn-book" id="btn-confirm" onclick="confirmBooking()" disabled>Confirm booking</button>
+            </div>
+            <div class="summary-card">
+              <div class="trust-row">
+                <div class="trust-item"><span class="trust-dot"></span>Free cancellation up to 24h before</div>
+                <div class="trust-item"><span class="trust-dot"></span>Confirmation sent by email</div>
+                <div class="trust-item"><span class="trust-dot"></span>No payment required upfront</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Confirmation screen -->
+      <div class="confirm-screen" id="confirm-screen">
+        <div class="confirm-icon">✅</div>
+        <h2>You're all booked!</h2>
+        <p>A confirmation has been sent to your email. We can't wait to see you.</p>
+        <div class="confirm-details" id="confirm-details"></div>
+        <button class="btn-book" style="max-width:320px;margin:0 auto;" onclick="goTo('dashboard')">View my appointments</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════ DASHBOARD PAGE ══════════════════════ -->
+<div id="page-dashboard" class="page">
+  <div class="dash">
+    <div class="dash-header">
+      <h1>My appointments</h1>
+      <div class="dash-header-right">
+        <button class="btn-new-appt" onclick="goTo('booking')">+ New booking</button>
+        <div class="dash-avatar" title="Maria A.">MA</div>
+      </div>
+    </div>
+    <div class="dash-body">
+      <p class="dash-greeting">Welcome back, <strong>Maria</strong> — here's your schedule.</p>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Upcoming</div>
+          <div class="stat-num green" id="stat-upcoming">2</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Completed</div>
+          <div class="stat-num">8</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Cancelled</div>
+          <div class="stat-num">1</div>
+        </div>
+      </div>
+ 
+      <div class="dash-section-title">Upcoming</div>
+      <div class="appt-list" id="upcoming-list">
+        <div class="appt-row">
+          <div class="appt-icon-wrap">✂️</div>
+          <div class="appt-info">
+            <div class="appt-name">Haircut &amp; styling</div>
+            <div class="appt-when">📅 Thu 11 Jun 2026 · 11:00</div>
+          </div>
+          <span class="badge badge-green">Confirmed</span>
+          <button class="appt-cancel">Cancel</button>
+        </div>
+        <div class="appt-row">
+          <div class="appt-icon-wrap">🤲</div>
+          <div class="appt-info">
+            <div class="appt-name">Relaxation massage</div>
+            <div class="appt-when">📅 Mon 22 Jun 2026 · 14:00</div>
+          </div>
+          <span class="badge badge-amber">Pending</span>
+          <button class="appt-cancel">Cancel</button>
+        </div>
+      </div>
+ 
+      <div class="dash-section-title">Past appointments</div>
+      <div class="appt-list">
+        <div class="appt-row">
+          <div class="appt-icon-wrap">💅</div>
+          <div class="appt-info">
+            <div class="appt-name">Manicure &amp; nails</div>
+            <div class="appt-when">📅 Fri 16 May 2026 · 10:00</div>
+          </div>
+          <span class="badge badge-gray">Completed</span>
+        </div>
+        <div class="appt-row">
+          <div class="appt-icon-wrap">✨</div>
+          <div class="appt-info">
+            <div class="appt-name">Facial treatment</div>
+            <div class="appt-when">📅 Mon 28 Apr 2026 · 15:00</div>
+          </div>
+          <span class="badge badge-gray">Completed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+ 
+<!-- ══════════════════════ AUTH MODAL ══════════════════════ -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()" aria-label="Close">&times;</button>
+    <div class="modal-logo">Book<span>Ease</span></div>
+    <div id="auth-login">
+      <h2>Welcome back</h2>
+      <p class="modal-sub">Sign in to manage your appointments.</p>
+      <div class="form-group">
+        <label class="form-label" for="login-email">Email address</label>
+        <input class="form-input" type="email" id="login-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="login-password">Password</label>
+        <div class="password-wrap">
+          <input class="form-input" type="password" id="login-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password">
+          <button class="pw-toggle" onclick="togglePw('login-password', this)" type="button" aria-label="Show password">&#128065;</button>
+        </div>
+      </div>
+      <p class="form-error" id="login-error">Incorrect email or password. Please try again.</p>
+      <button class="btn-auth" onclick="handleLogin()">Sign in</button>
+      <div class="auth-toggle">Don't have an account? <a onclick="switchAuth('register')">Create one</a></div>
+    </div>
+    <div id="auth-register" style="display:none;">
+      <h2>Create account</h2>
+      <p class="modal-sub">Join BookEase and book in seconds.</p>
+      <div class="form-group">
+        <label class="form-label" for="reg-name">Full name</label>
+        <input class="form-input" type="text" id="reg-name" placeholder="Maria Popescu" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="reg-email">Email address</label>
+        <input class="form-input" type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="reg-password">Password</label>
+        <div class="password-wrap">
+          <input class="form-input" type="password" id="reg-password" placeholder="Min. 8 characters" autocomplete="new-password">
+          <button class="pw-toggle" onclick="togglePw('reg-password', this)" type="button" aria-label="Show password">&#128065;</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="reg-password2">Confirm password</label>
+        <div class="password-wrap">
+          <input class="form-input" type="password" id="reg-password2" placeholder="Repeat password" autocomplete="new-password">
+          <button class="pw-toggle" onclick="togglePw('reg-password2', this)" type="button" aria-label="Show password">&#128065;</button>
+        </div>
+      </div>
+      <p class="form-error" id="reg-error">Please check your details and try again.</p>
+      <button class="btn-auth" onclick="handleRegister()">Create account</button>
+      <div class="auth-toggle">Already have an account? <a onclick="switchAuth('login')">Sign in</a></div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════ PROFILE PAGE ══════════════════════ -->
+<div id="page-profile" class="page">
+  <div class="profile-page">
+    <div class="profile-inner">
+      <div class="profile-header">
+        <div class="profile-avatar-lg" id="profile-avatar-lg">?</div>
+        <div class="profile-header-info">
+          <h1 id="profile-name">—</h1>
+          <p id="profile-email-display">—</p>
+        </div>
+      </div>
+      <div class="profile-card">
+        <h2>Account details</h2>
+        <div class="profile-field">
+          <span class="profile-field-label">Full name</span>
+          <span class="profile-field-val" id="pf-name">—</span>
+        </div>
+        <div class="profile-field">
+          <span class="profile-field-label">Email</span>
+          <span class="profile-field-val" id="pf-email">—</span>
+        </div>
+        <div class="profile-field">
+          <span class="profile-field-label">Member since</span>
+          <span class="profile-field-val">June 2026</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <h2>Quick actions</h2>
+        <div class="profile-action-row">
+          <button class="btn-profile-action" onclick="goTo('booking')">
+            <span class="btn-profile-action-icon">&#128197;</span>
+            <div><div style="font-weight:500;">Book an appointment</div><div style="font-size:12px;color:var(--stone);margin-top:2px;">Choose a service and pick a time</div></div>
+          </button>
+          <button class="btn-profile-action" onclick="goTo('dashboard')">
+            <span class="btn-profile-action-icon">&#128203;</span>
+            <div><div style="font-weight:500;">My appointments</div><div style="font-size:12px;color:var(--stone);margin-top:2px;">View upcoming and past bookings</div></div>
+          </button>
+          <button class="btn-profile-action danger" onclick="logout()">
+            <span class="btn-profile-action-icon">&#128682;</span>
+            <div><div style="font-weight:500;">Log out</div><div style="font-size:12px;color:var(--stone);margin-top:2px;">Sign out of your account</div></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
