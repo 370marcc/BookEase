@@ -7,23 +7,32 @@
   document.getElementById('page-' + page).classList.add('active');
   window.scrollTo(0, 0);
   if (page === 'dashboard') loadDashboard();
+  if (page === 'booking') resetBookingFlow();
 }
   function scrollToServices() {
     goTo('home');
     setTimeout(() => document.getElementById('services').scrollIntoView({ behavior: 'smooth' }), 50);
   }
   function toggleMenu() {
-    const links = document.querySelector('.nav-links');
-    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-    links.style.flexDirection = 'column';
-    links.style.position = 'absolute';
-    links.style.top = '64px';
-    links.style.left = '0'; links.style.right = '0';
-    links.style.background = 'var(--cream)';
-    links.style.padding = '1rem 1.5rem';
-    links.style.borderBottom = '1px solid var(--cream-dark)';
-    links.style.gap = '1rem';
+  document.querySelector('.nav-links').classList.toggle('mobile-open');
+}
+function closeMobileMenu() {
+  document.querySelector('.nav-links').classList.remove('mobile-open');
+}
+
+document.querySelector('.nav-links').addEventListener('click', () => {
+  if (window.innerWidth <= 640) closeMobileMenu();
+});
+
+document.addEventListener('click', (e) => {
+  const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.nav-hamburger');
+  if (navLinks.classList.contains('mobile-open') &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)) {
+    closeMobileMenu();
   }
+});
  
   // ── Booking state ──
   let state = { service: null, price: null, duration: null, date: null, time: null };
@@ -242,7 +251,7 @@ async function logout() {
   closeUserMenu();
   const btn = document.getElementById('nav-user-btn');
   btn.classList.remove('logged-in');
-  btn.textContent = '☺';
+  btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.25"/><circle cx="9" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="10" r="1" fill="currentColor" stroke="none"/><path d="M8 14.25c1 1.5 2.5 2.25 4 2.25s3-.75 4-2.25"/></svg>';
   goTo('home');
 }
 
@@ -409,4 +418,16 @@ function renderApptRow(b) {
       ${cancelBtn}
     </div>
   `;
+}
+
+function resetBookingFlow() {
+  state = { service: null, price: null, duration: null, date: null, time: null };
+  document.querySelectorAll('.svc-opt').forEach(o => o.classList.remove('picked'));
+  document.getElementById('time-section').style.display = 'none';
+  document.getElementById('time-grid').innerHTML = '';
+  document.getElementById('booking-form').style.display = '';
+  document.getElementById('confirm-screen').classList.remove('show');
+  renderCal();
+  updateSummary();
+  updateStepBar();
 }

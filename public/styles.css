@@ -367,6 +367,18 @@
   /* ── MOBILE ── */
   @media (max-width: 640px) {
     .nav-links { display: none; }
+    .nav-links.mobile-open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 64px;
+  left: 0; right: 0;
+  background: var(--cream);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--cream-dark);
+  gap: 1rem;
+  z-index: 90;
+}
     .nav-hamburger { display: flex; }
     nav { padding: 0 1.25rem; }
     .hero { padding: 3.5rem 1.25rem 3rem; }
