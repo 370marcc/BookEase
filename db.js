@@ -1,5 +1,5 @@
 const Database = require('better-sqlite3')
-const db = new Database('bookease.db')
+const db = new Database(process.env.NODE_ENV === 'production' ? '/data/bookease.db' : 'bookease.db')
 
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
