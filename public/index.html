@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookEase — Premium Salon & Spa</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="bookease.css">
+    <link rel="stylesheet" href="styles.css">
     </head>
 <body>
  
@@ -160,7 +160,7 @@
  
   <footer>
     <p style="margin-bottom:8px;">© 2026 BookEase · All rights reserved</p>
-    <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Contact</a>
+    <a onclick="goTo('privacy')">Privacy</a> · <a onclick="goTo('terms')">Terms</a> · <a onclick="goTo('contact')">Contact</a>
   </footer>
 </div>
  
@@ -277,15 +277,8 @@
 <!-- ══════════════════════ DASHBOARD PAGE ══════════════════════ -->
 <div id="page-dashboard" class="page">
   <div class="dash">
-    <div class="dash-header">
-      <h1>My appointments</h1>
-      <div class="dash-header-right">
-        <button class="btn-new-appt" onclick="goTo('booking')">+ New booking</button>
-        <div class="dash-avatar" title="Maria A.">MA</div>
-      </div>
-    </div>
     <div class="dash-body">
-      <p class="dash-greeting">Welcome back, <strong>Maria</strong> — here's your schedule.</p>
+      <p class="dash-greeting">Welcome back, <strong id="dash-greeting-name">there</strong> — here's your schedule.</p>
       <div class="stats-row">
         <div class="stat-card">
           <div class="stat-label">Upcoming</div>
@@ -302,45 +295,9 @@
       </div>
  
       <div class="dash-section-title">Upcoming</div>
-      <div class="appt-list" id="upcoming-list">
-        <div class="appt-row">
-          <div class="appt-icon-wrap">✂️</div>
-          <div class="appt-info">
-            <div class="appt-name">Haircut &amp; styling</div>
-            <div class="appt-when">📅 Thu 11 Jun 2026 · 11:00</div>
-          </div>
-          <span class="badge badge-green">Confirmed</span>
-          <button class="appt-cancel">Cancel</button>
-        </div>
-        <div class="appt-row">
-          <div class="appt-icon-wrap">🤲</div>
-          <div class="appt-info">
-            <div class="appt-name">Relaxation massage</div>
-            <div class="appt-when">📅 Mon 22 Jun 2026 · 14:00</div>
-          </div>
-          <span class="badge badge-amber">Pending</span>
-          <button class="appt-cancel">Cancel</button>
-        </div>
-      </div>
- 
+      <div class="appt-list" id="upcoming-list"></div>
       <div class="dash-section-title">Past appointments</div>
-      <div class="appt-list">
-        <div class="appt-row">
-          <div class="appt-icon-wrap">💅</div>
-          <div class="appt-info">
-            <div class="appt-name">Manicure &amp; nails</div>
-            <div class="appt-when">📅 Fri 16 May 2026 · 10:00</div>
-          </div>
-          <span class="badge badge-gray">Completed</span>
-        </div>
-        <div class="appt-row">
-          <div class="appt-icon-wrap">✨</div>
-          <div class="appt-info">
-            <div class="appt-name">Facial treatment</div>
-            <div class="appt-when">📅 Mon 28 Apr 2026 · 15:00</div>
-          </div>
-          <span class="badge badge-gray">Completed</span>
-        </div>
+      <div class="appt-list" id="past-list">
       </div>
     </div>
   </div>
@@ -449,7 +406,53 @@
   </div>
 </div>
 
-<script src="index.js"></script>
+<!-- PRIVACY PAGE -->
+<div id="page-privacy" class="page">
+  <div class="section" style="max-width:700px;margin:0 auto;">
+    <p class="section-tag">Legal</p>
+    <h1 class="section-title">Privacy <em>policy</em></h1>
+    <p style="color:var(--stone);line-height:1.8;margin-bottom:1rem;">We collect your name and email address when you create an account, and appointment details when you make a booking. This information is used solely to manage your bookings and send you confirmation emails.</p>
+    <p style="color:var(--stone);line-height:1.8;margin-bottom:1rem;">We do not sell or share your personal data with third parties. Your password is stored securely using industry-standard hashing and is never stored in plain text.</p>
+    <p style="color:var(--stone);line-height:1.8;margin-bottom:1rem;">You may request deletion of your account and all associated data at any time by contacting us.</p>
+    <p style="color:var(--stone);line-height:1.8;">Last updated: June 2026</p>
+  </div>
+</div>
+
+<!-- TERMS PAGE -->
+<div id="page-terms" class="page">
+  <div class="section" style="max-width:700px;margin:0 auto;">
+    <p class="section-tag">Legal</p>
+    <h1 class="section-title">Terms of <em>service</em></h1>
+    <p style="color:var(--stone);line-height:1.8;margin-bottom:1rem;">By using BookEase you agree to book appointments in good faith. Cancellations must be made at least 24 hours in advance. Late cancellations or no-shows may affect your ability to book in future.</p>
+    <p style="color:var(--stone);line-height:1.8;margin-bottom:1rem;">BookEase reserves the right to refuse service or cancel bookings at its discretion. Prices listed are indicative and may vary depending on the specific treatment required.</p>
+    <p style="color:var(--stone);line-height:1.8;">Last updated: June 2026</p>
+  </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="page-contact" class="page">
+  <div class="section" style="max-width:600px;margin:0 auto;">
+    <p class="section-tag">Get in touch</p>
+    <h1 class="section-title">Contact <em>us</em></h1>
+    <div style="background:var(--white);border-radius:var(--radius);border:1px solid var(--cream-dark);padding:2rem;display:flex;flex-direction:column;gap:1.25rem;">
+      <div class="form-group">
+        <label class="form-label" for="contact-name">Full name</label>
+        <input class="form-input" type="text" id="contact-name" placeholder="Maria Popescu">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-email">Email address</label>
+        <input class="form-input" type="email" id="contact-email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="contact-msg">Message</label>
+        <textarea class="form-input" id="contact-msg" rows="5" placeholder="How can we help?" style="resize:vertical;"></textarea>
+      </div>
+      <button class="btn-auth" onclick="submitContact()">Send message</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
